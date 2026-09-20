@@ -1,0 +1,44 @@
+---
+- name: Configure Web Server Environment
+  hosts: webservers
+  become: yes  
+
+  tasks:
+    - name: Ensure an application user exists
+      user:
+        name: app_user
+        state: present
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Nginx Web Server
+      apt:
+        name: nginx
+        state: present
+
+    - name: Install htop for system monitoring
+      apt:
+        name: htop
+        state: present
+
+    - name: Install Fail2ban for intrusion prevention
+      apt:
+        name: fail2ban
+        state: present
+
+    - name: Ensure Fail2ban is actively running
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes
+
+    - name: Ensure Nginx is actively running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
