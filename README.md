@@ -53,3 +53,7 @@ The end result is a fully functional web server accessible over the public inter
 ---
 **Author:** Oseni Sakariyau Oluwadamilare (Dami)  
 **Role:** DevOps Engineering Intern @ Davine Technology
+
+## License
+
+Released under the [MIT License](LICENSE).
